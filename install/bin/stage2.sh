@@ -11,7 +11,7 @@ if [ $SOURCE -gt 0 ]; then
   mkdir /opt/symphony
   cd /opt/symphony
   git clone https://github.com/alces-software/symphony4.git generic
-  git clone https://github.com/alces-software/symphony-director.git director
+  git clone https://github.com/alces-software/symphony-monitor.git monitor
 fi
 ############# END SOURCE ###################
 
