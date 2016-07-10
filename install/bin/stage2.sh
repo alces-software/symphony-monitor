@@ -15,6 +15,12 @@ if [ $SOURCE -gt 0 ]; then
 fi
 ############# END SOURCE ###################
 
+#firewall
+firewall-cmd --add-port 8659/tcp --zone bld --permanent
+firewall-cmd --add-port 8649/udp --zone bld --permanent
+firewall-cmd --add-service http --zone bld --permanent
+firewall-cmd --reload
+
 #fix resolv.conf
   cat << EOF > /etc/resolv.conf
 search bld.cluster.compute.estate prv.cluster.compute.estate mgt.cluster.compute.estate pub.cluster.compute.estate cluster.compute.estate
