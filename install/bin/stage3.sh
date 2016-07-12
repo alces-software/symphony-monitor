@@ -39,3 +39,7 @@ EOF
   /usr/bin/puppet agent --test --environment symphony
 fi
 ############# END PUPPET #####################
+
+PASS=`echo "${ADMINPASSWORD}" | md5sum - | awk '{ print $1 }'`
+echo "admin:${PASS}" >> /etc/nagios/passwd
+echo "nagiosadmin:${PASS}" >> /etc/nagios/passwd

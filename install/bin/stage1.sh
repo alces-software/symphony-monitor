@@ -104,7 +104,7 @@ firewall-cmd --reload
 
 #YUM
 yum -y --config https://raw.githubusercontent.com/alces-software/symphony4/master/etc/yum/centos7-base.conf update
-yum -y --config https://raw.githubusercontent.com/alces-software/symphony4/master/etc/yum/centos7-base.conf install vim emacs yum-utils git
+yum -y --config https://raw.githubusercontent.com/alces-software/symphony4/master/etc/yum/centos7-base.conf install vim emacs yum-utils git wget rsync
 
 #DISABLE CLOUD-INIT (WE ONLY NEED IT ONCE)
 systemctl disable cloud-init
@@ -114,3 +114,5 @@ systemctl disable cloud-init-local
 
 echo "root:${ROOTPASSWORD}" | chpasswd
 
+#Allow root login with keys
+sed -i -e "s/^PermitRootLogin.*$/PermitRootLogin without-password/g" /etc/ssh/sshd_config
